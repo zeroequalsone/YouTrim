@@ -1,6 +1,10 @@
 <div align="center">
   <h1 style="color: #8B5CF6; font-size: 3em; margin-top: 10px;">YouTrim</h1>
   <p style="font-style: italic; color: #4B5563; font-size: 1.2em;">Download and trim YouTube videos with ease</p>
+  <img src="screenshots/image1.png" alt="Image 1" style="margin-bottom: 10px;">
+  <img src="screenshots/image2.png" alt="Image 2" style="margin-bottom: 10px;">
+  <img src="screenshots/image3.png" alt="Image 3" style="margin-bottom: 10px;">
+  <img src="screenshots/image4.png" alt="Image 4">
 </div>
 
 <div style="background: linear-gradient(45deg, #EDE9FE, #F3F4F6); border-radius: 15px; padding: 25px; margin: 30px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
