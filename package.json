@@ -1,0 +1,21 @@
+{
+  "name": "youtrim",
+  "version": "1.0.0",
+  "description": "Easy To Use YouTube Video Downloader and Trimmer",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "youtube",
+    "video",
+    "downloader",
+    "trimmer"
+  ],
+  "author": "zeroequalsone",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

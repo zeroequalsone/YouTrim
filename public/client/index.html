@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTrim - YouTube Video Trimmer</title>
+    <!-- Google Fonts - Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="container max-w-2xl p-6">
+      <!--
+      Header Section
+      Contains the main title and info button
+      -->
+      <div class="relative mb-4">
+        <h1 class="text-3xl font-bold text-purple-600 text-center mb-2">
+          YouTrim
+        </h1>
+        <!--
+        Info Button
+        Opens the info modal when clicked
+        -->
+        <button
+          id="infoButton"
+          class="absolute top-0 right-0 p-2 cursor-pointer bg-purple-600 text-white font-medium rounded-md active:outline-none shadow-sm hover:bg-purple-500 active:ring-2 active:ring-purple-700 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="white"
+            class="size-6"
+            focusable="false"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <p class="text-center text-gray-600 mb-6">
+        Download and trim YouTube videos with ease.
+      </p>
+
+      <!--
+      Main Form Section
+      Contains input fields for video URL, start time, end time, and download button
+      -->
+      <div id="downloadDiv" class="mb-8 flex flex-col">
+        <!--
+        Video ID/URL Input
+        Input field for YouTube video ID or URL
+        -->
+        <input
+          type="text"
+          id="videoId"
+          placeholder="YouTube Video ID or URL"
+          minlength="11"
+          maxlength="43"
+          required
+          class="w-full mb-4 p-2 border rounded-md active:outline-none shadow-sm active:ring-2 active:ring-purple-700 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-700"
+        />
+
+        <!--
+        Time Inputs
+        Input fields for start and end times
+        -->
+        <div class="flex mb-4">
+          <input
+            type="text"
+            id="startTime"
+            placeholder="Start Time (e.g., 00:00:30)"
+            required
+            class="w-1/2 mr-2 p-2 border rounded-md active:outline-none shadow-sm active:ring-2 active:ring-purple-700 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-700"
+          />
+          <input
+            type="text"
+            id="endTime"
+            placeholder="End Time (e.g., 00:01:30)"
+            required
+            class="w-1/2 ml-2 p-2 border rounded-md active:outline-none shadow-sm active:ring-2 active:ring-purple-700 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-700"
+          />
+        </div>
+        <!--
+        Download Button
+        Initiates the download process when clicked
+        -->
+        <button
+          id="downloadButton"
+          class="w-full bg-purple-600 text-white font-medium rounded-md active:outline-none shadow-sm hover:bg-purple-500 active:ring-2 active:ring-purple-700 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-700 py-2 px-4"
+        >
+          Download
+        </button>
+      </div>
+
+      <!--
+      Status Modal
+      Displays the current status of the download process
+      -->
+      <div
+        id="statusModal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full items-center justify-center hidden"
+      >
+        <div
+          class="relative p-5 border max-w-lg mx-auto my-10 shadow-lg rounded-md bg-white"
+        >
+          <div class="mt-3 text-center">
+            <h3 class="text-lg leading-6 font-bold text-purple-700">Status</h3>
+            <div class="px-7 py-3">
+              <p id="statusText" class="text-sm text-gray-500">
+                <span id="downloadMessage">Idle</span
+                ><span id="ellipsis"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--
+      Info Modal
+      Displays information about how to use the application
+      -->
+      <div
+        id="infoModal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full items-center justify-center hidden"
+      >
+        <div
+          class="relative p-5 border max-w-lg mx-auto my-10 shadow-lg rounded-md bg-white"
+        >
+          <div class="mt-3 text-center">
+            <h3 class="text-lg leading-6 font-bold text-purple-700">
+              Info Menu
+            </h3>
+            <div class="px-7 py-3">
+              <p class="text-sm text-gray-500">
+                How to download and trim a video:
+              </p>
+              <ol
+                class="list-decimal text-left mt-2 text-sm text-gray-600 marker:text-purple-700"
+              >
+                <li>Enter the <b>YouTube Video ID or URL</b>.</li>
+                <li>Set the <b>Start Time</b> and <b>End Time</b>.</li>
+                <li>
+                  Click <b>Download</b> to download or
+                  <b>Download and Trim</b> to download and trim your video.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include the external JavaScript file -->
+    <script src="/client/scripts.js"></script>
+  </body>
+</html>
