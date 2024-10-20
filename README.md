@@ -122,12 +122,6 @@
       </span>
       <span><strong>Video Processing:</strong> yt-dlp, FFmpeg</span>
     </li>
-    <li style="display: flex; align-items: center;">
-      <span style="background-color: white; border-radius: 10px; width: 24px; height: 24px; display: inline-flex; justify-content: center; align-items: center; margin-right: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-      </span>
-      <span><strong>Deployment:</strong> (Add your deployment platform here, e.g., Heroku, Vercel, etc.)</span>
-    </li>
   </ul>
 </div>
 
